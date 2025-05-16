@@ -1,6 +1,7 @@
 # .github/workflows/pr-check.yml
 name: "PR-only Status Check"
-
+permissions:
+  contents: read
 on:
   pull_request:
     branches:

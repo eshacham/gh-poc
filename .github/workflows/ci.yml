@@ -1,6 +1,7 @@
 # .github/workflows/ci.yml
 name: CI – Lint & Tests
-
+permissions:
+  contents: read
 on:
   pull_request:
     branches: [ main ]
