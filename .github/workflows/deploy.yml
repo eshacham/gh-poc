@@ -10,7 +10,8 @@ jobs:
   deploy:
     name: Deploy (manual approval)
     runs-on: ubuntu-latest
-    environment: production
+    environment: 
+      name: production
 
     steps:
       - name: Checkout code
