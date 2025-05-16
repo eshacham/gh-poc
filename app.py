@@ -14,7 +14,9 @@ def insecure():
 def mask_key(key):
     # BAD: masking the key in the logs
     # This is not a secure way to handle sensitive information
-    return key.replace(key[:-4], "*"*(len(key)-4))
+    return '*' * (len(key) - 4) + key[-4:]
+    # return  key[-4:].rjust(len(key), '*')
+
 
 def main():
     print(f"Hello from GitHub Secure CI/CD POC!: {mask_key(AWS_SECRET_ACCESS_KEY)}")
