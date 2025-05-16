@@ -1,7 +1,7 @@
 import os
 import subprocess
 
-AWS_SECRET_ACCESS_KEY = 'AKIA1234567890ABCDEF'
+aws_access_key_id = 'AKIA1234567890ABCDEF'
 
 
 def insecure():
@@ -19,7 +19,7 @@ def mask_key(key):
 
 
 def main():
-    print(f"Hello from GitHub Secure CI/CD POC!: {mask_key(AWS_SECRET_ACCESS_KEY)}")
+    print(f"Hello from GitHub Secure CI/CD POC!: {mask_key(aws_access_key_id)}")
     insecure()
 
 
