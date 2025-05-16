@@ -11,8 +11,13 @@ def insecure():
     subprocess.run(cmd, shell=True)
 
 
+def mask_key(key):
+    # BAD: masking the key in the logs
+    # This is not a secure way to handle sensitive information
+    return key.replace(key[:-4], "*"*(len(key)-4))
+
 def main():
-    print(f"Hello from GitHub Secure CI/CD POC!: {AWS_SECRET_ACCESS_KEY}")
+    print(f"Hello from GitHub Secure CI/CD POC!: {mask_key(AWS_SECRET_ACCESS_KEY)}")
     insecure()
 
 
