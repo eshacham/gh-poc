@@ -19,6 +19,7 @@ def mask_key(key):
 
 
 def main():
+    # nosem
     print(f"Hello from GitHub Secure CI/CD POC!: {mask_key(AWS_SECRET_ACCESS_KEY)}")
     insecure()
 
