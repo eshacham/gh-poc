@@ -1,21 +1,27 @@
 import os
 import subprocess
 
-
-def main():
-    print("Hello from GitHub Secure CI/CD POC!")
+AWS_SECRET_ACCESS_KEY = 'AKIA1234567890ABCDEF'
 
 
 def insecure():
     # BAD: reading a shell command from an environment variable
-    #      and passing it straight into subprocess.run with shell=True
+    # and passing it straight into subprocess.run with shell=True
     cmd = os.getenv("BAD_CMD", 'echo "This is a bad command"')
     subprocess.run(cmd, shell=True)
 
 
-if __name__ == "__main__":
-    main()
+def mask_key(key):
+    # BAD: masking the key in the logs
+    # This is not a secure way to handle sensitive information
+    return '*' * (len(key) - 4) + key[-4:]
+    # return  key[-4:].rjust(len(key), '*')
+
+
+def main():
+    print(f"Hello from GitHub Secure CI/CD POC!: {mask_key(AWS_SECRET_ACCESS_KEY)}")
     insecure()
 
 
-AWS_SECRET_ACCESS_KEY = 'AKIA1234567890ABCDEF'
+if __name__ == "__main__":
+    main()
